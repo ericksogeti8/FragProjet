@@ -25,6 +25,7 @@ public class Music implements Serializable{
     private String coverURL;
     private String idJsonMusic;     //identifiant de la musique
 
+//    =======================================================
     //CREATION DU SGBD a travers une classe fournie par Android :
     // SQLiteOpenHelper
 
@@ -33,11 +34,13 @@ public class Music implements Serializable{
     }
 //        ; le new dans l'instruction "Music m = new Music("0")" fait un appel au constructeur
 //          définit comem cela : Music(String idJsonMusic)
+
     public Music(String idJsonMusic) {
         this.idJsonMusic = idJsonMusic;
     }
 
-//-----------------------------------------
+//    =======================================================
+
     public String getTitle() {
         return title;
     }
@@ -102,9 +105,9 @@ public class Music implements Serializable{
     }
 
 
-/** *****************************************************
+/** =======================================================
  *  Class static getDefaultMusic : inform song data
-    ******************************************************/
+ ======================================================= */
     public static Music getDefaultMusic()
     {
         Music m = new Music("0");

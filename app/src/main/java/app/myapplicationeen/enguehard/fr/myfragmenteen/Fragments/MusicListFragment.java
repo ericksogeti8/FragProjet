@@ -22,8 +22,10 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import app.myapplicationeen.enguehard.fr.myfragmenteen.MainActivity;
 import app.myapplicationeen.enguehard.fr.myfragmenteen.Music;
 import app.myapplicationeen.enguehard.fr.myfragmenteen.R;
+import app.myapplicationeen.enguehard.fr.myfragmenteen.model.Repository.DatabaseManager;
 import app.myapplicationeen.enguehard.fr.myfragmenteen.model.fetcher.ConnectionManager;
 import app.myapplicationeen.enguehard.fr.myfragmenteen.model.fetcher.DeezerMusicFetcher;
 import app.myapplicationeen.enguehard.fr.myfragmenteen.model.fetcher.MusicFetcher;
@@ -49,6 +51,7 @@ public class MusicListFragment extends Fragment {
     private MusicFetcher fetcher;
     private String viewById;
     private VolleyConnectionManager connectionManager;
+    private DatabaseManager dbmgr;
 
 //    private final ConnectionManager connectionManager = new VolleyConnectionManager((getActivity()));
 //    private final MusicFetcher fetcher = new DeezerMusicFetcher(connectionManager); // CHANGE this later !! pour un new DeezerMusicFetcher
@@ -66,6 +69,7 @@ public class MusicListFragment extends Fragment {
     {
         this.connectionManager = new VolleyConnectionManager(getActivity());
         this.fetcher = new DeezerMusicFetcher(this.connectionManager);
+        this.dbmgr = ((MainActivity) getActivity()).getDatabaseManager();
 
         // on remplace setContentView(R.layout.fragment_music); par le ViewFragment
         // permet de gonfler/transformer un XML en objet
@@ -255,10 +259,9 @@ public class MusicListFragment extends Fragment {
             TextView albumTextView_2 = (TextView) cell.findViewById(R.id.AlbumTextView_2);
             ImageView starImageView = (ImageView) cell.findViewById(R.id.StarImageView);
 
-//            coverImageView.setAlpha(musicToDisplay.isFavorite() ? 1f : 0f);
             titleTextView_1.setText(musicToDisplay.getTitle());
             albumTextView_2.setText(musicToDisplay.getAlbum());
-            starImageView.setAlpha(musicToDisplay.isFavorite() ? 1f : 0f);
+            starImageView.setAlpha(dbmgr.isFavorite(musicToDisplay) ? 1f : 0f);
 
             // 1er on affiche l'icone BugDroïd
             coverImageView.setImageResource(R.drawable.ucjapan);        //ic_launcher
@@ -274,7 +277,6 @@ public class MusicListFragment extends Fragment {
                     }
                 }
             });
-
 
             return cell;
         }

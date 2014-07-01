@@ -6,20 +6,37 @@ import android.os.Bundle;
 import app.myapplicationeen.enguehard.fr.myfragmenteen.Fragments.MusicFragment;
 import app.myapplicationeen.enguehard.fr.myfragmenteen.Fragments.MusicListFragment;
 import app.myapplicationeen.enguehard.fr.myfragmenteen.Fragments.OnMusicSelectedListener;
+import app.myapplicationeen.enguehard.fr.myfragmenteen.model.Repository.DatabaseManager;
 
 
 public class MainActivity extends Activity {
 
-    MusicListFragment list;
-    MusicFragment detail;
+    //===========   creation fragments list et detail    ==================
+    private MusicListFragment list;
+    private MusicFragment detail;
+    private DatabaseManager databaseManager;
+
+
+
+    public DatabaseManager getDatabaseManager() {
+        return databaseManager;
+    }
 
 
     @Override
+    //=============================================================================================
+    //=====================================      M A I N    =======================================
+    //=============================================================================================
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        this.databaseManager = new DatabaseManager(this);
+
         setContentView(R.layout.activity_main);
 
-        if(findViewById(R.id.frameLayout) != null ) // Telephone GALAXIE NEXUS 4 si recherche par l'id est <> null
+
+
+        if(findViewById(R.id.frameLayout) != null ) // SmartPhone GALAXIE NEXUS 4 si recherche par l'id est <> null
         {
             list = new MusicListFragment();
             detail = new MusicFragment();
@@ -74,4 +91,6 @@ public class MainActivity extends Activity {
         }
 
     }
+
+
 }

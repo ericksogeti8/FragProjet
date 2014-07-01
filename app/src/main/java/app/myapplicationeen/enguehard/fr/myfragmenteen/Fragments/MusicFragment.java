@@ -17,8 +17,10 @@ import android.widget.TextView;
 
 import java.io.IOException;
 
+import app.myapplicationeen.enguehard.fr.myfragmenteen.MainActivity;
 import app.myapplicationeen.enguehard.fr.myfragmenteen.Music;
 import app.myapplicationeen.enguehard.fr.myfragmenteen.R;
+import app.myapplicationeen.enguehard.fr.myfragmenteen.model.Repository.DatabaseManager;
 
 /************************************************
  * Created by ENGUEHARD Erick on 23/06/2014.
@@ -39,14 +41,20 @@ public class MusicFragment extends Fragment {
 
 
     private Music music;
+
+    private DatabaseManager dbmgr;
+
     private MediaPlayer player = new MediaPlayer();
+
     /*********************************************
      Fragment OnCreateView en mode fragment
      *****************************************************/
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        //        setContentView(R.layout.fragment_music);
+        this.dbmgr = ((MainActivity) getActivity()).getDatabaseManager();
+
+
         // permet de gonfler/transformer un XML en objet
         View viewFragment = inflater.inflate(R.layout.activity_music, null);
 
@@ -87,20 +95,24 @@ public class MusicFragment extends Fragment {
             }
         });
 
-        // Favori gestion OUI
-        this.musicFavYesRB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                music.setFavorite(true);
-            }
-        });
         // Favori gestion NON
         this.musicFavNoRB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                music.setFavorite(false);
+//                music.setFavorite(false); //Remplacer la gestion du favori NON par le manager de sgbd
+                dbmgr.remove(music);
             }
         });
+
+        // Favori gestion OUI
+        this.musicFavYesRB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                music.setFavorite(true); //Remplacer la gestion du favori OUI par le manager de sgbd
+                dbmgr.add(music);
+            }
+        });
+
         /*********************************************************
          listener button action_Deezer  : display site Deezer on Click
          *****************************************************************/
