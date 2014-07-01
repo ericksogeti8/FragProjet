@@ -1,0 +1,45 @@
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center_vertical">
+
+    <ImageView
+        android:src="@drawable/ucjapan"
+        android:id="@+id/CoverImageView"
+        android:layout_width="52dp"
+        android:layout_height="match_parent"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="New Text 1"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:id="@+id/TitleTextView_1"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="New Text 2"
+                android:textStyle="italic"
+                android:textSize="14sp"
+                android:id="@+id/AlbumTextView_2"
+                android:paddingLeft="5dp"/>
+        </LinearLayout>
+
+    <ImageView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:padding="5dp"
+           android:id="@+id/StarImageView"
+           android:src="@android:drawable/btn_star_big_on"/>
+
+</LinearLayout>

@@ -1,0 +1,23 @@
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+
+    <fragment
+        android:layout_width="0dp"
+        android:layout_weight="40"
+        android:layout_height="match_parent"
+        android:name="app.myapplicationeen.enguehard.fr.myfragmenteen.Fragments.MusicListFragment"
+        android:id="@+id/fragment" />
+
+    <fragment
+        android:layout_width="0dp"
+        android:layout_weight="60"
+        android:layout_height="match_parent"
+        android:name="app.myapplicationeen.enguehard.fr.myfragmenteen.Fragments.MusicFragment"
+        android:id="@+id/fragment2" />
+
+</LinearLayout>
