@@ -6,6 +6,7 @@ import app.myapplicationeen.enguehard.fr.myfragmenteen.Music;
 import app.myapplicationeen.enguehard.fr.myfragmenteen.model.fetcher.MusicFetcher;
 import app.myapplicationeen.enguehard.fr.myfragmenteen.model.fetcher.OnMusicFetcherResultListener;
 
+// TesTer le commit du projet sur github le 02/07/2014 à 14:00
 /**
  * Created by Fitec on 27/06/2014.
  */
